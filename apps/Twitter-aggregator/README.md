@@ -1,13 +1,13 @@
 **Twitter aggregator**
 
-**Configure your app in the source code*
+*Configure your app in the source code*
 
 This app aggregates all the tweets from a trending topic in the Los Angeles area.
 In order to run the app, you need to specify the CONSUMER_KEY, CONSUMER_KEY_SECRET, ACCESS_TOKEN and ACCESS_TOKEN_SECRET in the Main class. Those keys and secret keys are given by twitter.
 You need to have created a new app on the twitter app websites - https://apps.twitter.com/ - in order to get those credentials.
 
 
-** Run the program*
+* Run the program*
 
 In order to run the program, you need to include all the jar files in the lib directory into your JAVA classpath. Then you specify the Main class to the java command.
 For instance from the bin folder, you can execute the following command: 
