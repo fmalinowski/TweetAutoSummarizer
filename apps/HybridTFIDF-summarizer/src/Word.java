@@ -24,7 +24,7 @@ public class Word {
 		return weight;
 	}
 	
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 
@@ -49,15 +49,18 @@ public class Word {
 		return termFrequency;
 	}
 
-	public void setTermFrequency(double termFrequency) {
-		this.termFrequency = termFrequency;
-	}
-
 	public double getInverseDocumentFrequency() {
 		return inverseDocumentFrequency;
 	}
-
-	public void setInverseDocumentFrequency(double inverseDocumentFrequency) {
-		this.inverseDocumentFrequency = inverseDocumentFrequency;
+	
+	public double computeAndSetWeight(int numberOfSentences, int numberOfWords) {
+		if (numberOfWords == 0 || this.numberOfSentencesContainingWord == 0) {
+			throw new IllegalArgumentException("The number of words or the number of sentences containing the word is invalid");
+		}
+		this.termFrequency = (double)this.numberOfOccurences / (double)numberOfWords;
+		this.inverseDocumentFrequency = (double)numberOfSentences / (double)this.numberOfSentencesContainingWord;
+		this.weight = this.termFrequency * Math.log(this.inverseDocumentFrequency) / Math.log(2);
+		
+		return this.weight;
 	}
 }
