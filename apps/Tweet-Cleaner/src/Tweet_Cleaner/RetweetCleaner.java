@@ -13,18 +13,21 @@ public class RetweetCleaner {
 	public static void cleanRetweet(File input,File output){
 		Set<String> allText = new HashSet<String>();
 		PrintWriter pWriter = null;
+		BufferedReader bReader = null;
 		try {
-			BufferedReader bReader = new BufferedReader(new FileReader(input));
+			bReader = new BufferedReader(new FileReader(input));
 			pWriter = new PrintWriter(output);
 			String line = bReader.readLine();
 			while(line != null){
 				String t = Helper.getTweetText(line);
 				if(!allText.contains(t)){
 					pWriter.append(line);
+					pWriter.append('\n');
 					allText.add(t);
 				}
 				line = bReader.readLine();
 			}
+			bReader.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,6 +38,7 @@ public class RetweetCleaner {
 			if(pWriter != null){
 				pWriter.close();
 			}
+		
 		}
 		
 	}
