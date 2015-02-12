@@ -28,22 +28,21 @@ public class SummaryBuilder {
 		wordsHashTable = sentencesToWordsDivider.divideSentencesIntoUniqueWords();
 		numberOfWordsConsidered = sentencesToWordsDivider.getTotalNumberOfWords();
 		
-		computeTermsWeight(wordsHashTable, listOfSentences, numberOfWordsConsidered);
+		computeTermsWeight(wordsHashTable, listOfSentences.size(), numberOfWordsConsidered);
 		summarySentence = computeSentencesWeight(listOfSentences, wordsHashTable);
 		
 		return summarySentence;
 	}
 	
-	public void computeTermsWeight(HashMap<String, Word> wordsHashTable, List<Sentence> listOfSentences, 
+	public void computeTermsWeight(HashMap<String, Word> wordsHashTable, int numberOfSentences, 
 			int numberOfWordsConsidered) {
 		
-		Iterator<Sentence> iterator = listOfSentences.iterator();
-		int numberOfSentences = listOfSentences.size();
+		Iterator<Entry<String, Word>> iterator = wordsHashTable.entrySet().iterator();
 		
 		while (iterator.hasNext()) {
-			Map.Entry<String, Word> pairs = (Entry<String, Word>) iterator.next();
+			Entry<String, Word> pairs = (Map.Entry<String,Word>) iterator.next();
 			Word word = pairs.getValue();			
-			word.computeAndSetWeight(numberOfSentences, numberOfWordsConsidered);
+			word.computeAndSetWeight(numberOfSentences, numberOfWordsConsidered);			
 		}
 	}
 
