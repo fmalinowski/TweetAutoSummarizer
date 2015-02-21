@@ -1,3 +1,4 @@
+package edu.ucsb.cs290n.hybrid_tfidf;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -26,7 +27,7 @@ public class SentenceToWordsBreaker {
 			TokenizerModel tokenizerModel = new TokenizerModel(enTokenInputStream);
 			Tokenizer tokenizer = new TokenizerME(tokenizerModel);
 			
-			words = tokenizer.tokenize(this.sentence.getSentence().toLowerCase());
+			words = tokenizer.tokenize(this.sentence.getSentence());
 		}
 		catch (IOException e) {
 			e.printStackTrace();

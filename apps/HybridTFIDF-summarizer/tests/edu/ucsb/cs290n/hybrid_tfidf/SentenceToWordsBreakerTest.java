@@ -1,3 +1,4 @@
+package edu.ucsb.cs290n.hybrid_tfidf;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
