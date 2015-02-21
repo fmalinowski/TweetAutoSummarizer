@@ -1,6 +1,7 @@
 package edu.ucsb.cs290n.hybrid_tfidf;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -26,12 +27,9 @@ public class SentencesToWordsDivider {
 		this.totalNumberOfWords = 0;
 
 		for (Sentence sentence : this.listOfSentences) {
-			String words[] = new SentenceToWordsBreaker(sentence).breakIntoWords();	
+			String[] words = sentence.getWords();
 				
-			this.addSentenceWordsIntoWordHash(words);
-			
-			// update the sentence object with number of words
-			sentence.setNumberOfWords(words.length);			
+			this.addSentenceWordsIntoWordHash(words);			
 		}
 			
 		return wordsHashTable;
