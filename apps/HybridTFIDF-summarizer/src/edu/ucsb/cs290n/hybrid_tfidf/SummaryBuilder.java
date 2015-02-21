@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 
 import edu.ucsb.cs290n.tools.TextFileReader;
 
-
 public class SummaryBuilder {
 	
 	public static final int MINIMUM_THRESHOLD = 11;
@@ -23,15 +22,20 @@ public class SummaryBuilder {
 		int numberOfWordsConsidered;
 		String summarySentence;
 		
+		System.out.println("Getting all the tweets...");
 		List<String> listOfPosts = new TextFileReader(filename).getLines();
 		
+		System.out.println("Dividing tweets into sentences...");
 		List<Sentence> listOfSentences = new PostsToSentencesDivider(listOfPosts).dividePostsIntoSentences();
 		
+		System.out.println("Dividing sentences into words...");
 		sentencesToWordsDivider = new SentencesToWordsDivider(listOfSentences);
 		wordsHashTable = sentencesToWordsDivider.divideSentencesIntoUniqueWords();
 		numberOfWordsConsidered = sentencesToWordsDivider.getTotalNumberOfWords();
 		
+		System.out.println("Computing term weights...");
 		computeTermsWeight(wordsHashTable, listOfSentences.size(), numberOfWordsConsidered);
+		System.out.println("Computing sentence weights...");
 		summarySentence = computeSentencesWeight(listOfSentences, wordsHashTable);
 		
 		return summarySentence;

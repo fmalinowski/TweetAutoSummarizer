@@ -30,5 +30,25 @@ public class SentenceTest {
 		assertEquals(2.363636, sentence.computeAndSetWeight(wordsHashTable, 11), 0.00001);
 		assertEquals(6.5, sentence.computeAndSetWeight(wordsHashTable, 2), 0.00001);
 	}
+	
+	@Test
+	public void testBreakIntoWords() {
+		Sentence sentence = new Sentence("hello, I am french.");
+		
+		assertEquals(0, sentence.getNumberOfWords());
+		String[] expectedWords = {"hello", ",", "I", "am", "french", "."};
+		assertEquals(expectedWords, sentence.breakIntoWords());
+		assertEquals(6, sentence.getNumberOfWords());
+	}
+	
+	@Test
+	public void testGetWords() {
+		Sentence sentence = new Sentence("hello, I am french.");
+		
+		assertEquals(0, sentence.getNumberOfWords());
+		String[] expectedWords = {"hello", ",", "I", "am", "french", "."};
+		assertEquals(expectedWords, sentence.breakIntoWords());
+		assertEquals(6, sentence.getNumberOfWords());
+	}
 
 }
