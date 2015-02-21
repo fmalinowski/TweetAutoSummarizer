@@ -1,3 +1,4 @@
+package edu.ucsb.cs290n.hybrid_tfidf;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;

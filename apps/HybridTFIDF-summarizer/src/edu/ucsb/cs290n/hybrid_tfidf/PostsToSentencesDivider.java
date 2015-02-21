@@ -1,3 +1,4 @@
+package edu.ucsb.cs290n.hybrid_tfidf;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;

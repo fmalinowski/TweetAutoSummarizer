@@ -1,3 +1,4 @@
+package edu.ucsb.cs290n.hybrid_tfidf;
 
 public class Word {
 

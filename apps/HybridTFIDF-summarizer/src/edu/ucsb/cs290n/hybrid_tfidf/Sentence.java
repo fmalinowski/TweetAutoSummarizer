@@ -1,3 +1,4 @@
+package edu.ucsb.cs290n.hybrid_tfidf;
 import java.util.HashMap;
 
 import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
