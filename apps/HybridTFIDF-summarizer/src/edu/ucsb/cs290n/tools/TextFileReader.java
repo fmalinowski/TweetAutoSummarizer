@@ -1,5 +1,4 @@
-package edu.ucsb.cs290n.hybrid_tfidf;
-
+package edu.ucsb.cs290n.tools;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,16 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class TweetPostsRetriever {
-	
+public class TextFileReader {
 	private String filename; 
 
-	public TweetPostsRetriever(String filename) {
+	public TextFileReader(String filename) {
 		this.filename = filename;
 	}
 	
-	public List<String> getAllPosts() {
+	public List<String> getLines() {
 		List<String> postsArray = new ArrayList<String>();
 		String line;
 		
@@ -38,5 +35,4 @@ public class TweetPostsRetriever {
 		
 		return postsArray;
 	}
-	
 }

@@ -5,7 +5,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 
 @RunWith(Suite.class)
-@SuiteClasses({ PostsToSentencesDividerTest.class, SentencesToWordsDividerTest.class, SentenceTest.class, SentenceToWordsBreakerTest.class, SummaryBuilderTest.class, TweetPostsRetrieverTest.class, WordTest.class })
+@SuiteClasses({ PostsToSentencesDividerTest.class, SentencesToWordsDividerTest.class, SentenceTest.class, SentenceToWordsBreakerTest.class, SummaryBuilderTest.class, WordTest.class })
 public class AllTests {
 
 }

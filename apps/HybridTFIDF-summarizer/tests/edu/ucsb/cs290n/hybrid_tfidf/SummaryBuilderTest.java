@@ -12,9 +12,11 @@ import org.powermock.api.easymock.PowerMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import edu.ucsb.cs290n.tools.TextFileReader;
+
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({TweetPostsRetriever.class, PostsToSentencesDivider.class, SentencesToWordsDivider.class, SummaryBuilder.class})
+@PrepareForTest({TextFileReader.class, PostsToSentencesDivider.class, SentencesToWordsDivider.class, SummaryBuilder.class})
 public class SummaryBuilderTest {
 
 	@Test

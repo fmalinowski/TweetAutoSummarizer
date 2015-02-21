@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import edu.ucsb.cs290n.tools.TextFileReader;
+
 
 public class SummaryBuilder {
 	
@@ -21,7 +23,7 @@ public class SummaryBuilder {
 		int numberOfWordsConsidered;
 		String summarySentence;
 		
-		List<String> listOfPosts = new TweetPostsRetriever(filename).getAllPosts();
+		List<String> listOfPosts = new TextFileReader(filename).getLines();
 		
 		List<Sentence> listOfSentences = new PostsToSentencesDivider(listOfPosts).dividePostsIntoSentences();
 		
