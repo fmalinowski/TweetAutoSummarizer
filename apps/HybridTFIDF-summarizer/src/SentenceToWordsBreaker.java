@@ -26,7 +26,7 @@ public class SentenceToWordsBreaker {
 			TokenizerModel tokenizerModel = new TokenizerModel(enTokenInputStream);
 			Tokenizer tokenizer = new TokenizerME(tokenizerModel);
 			
-			words = tokenizer.tokenize(this.sentence.getSentence());
+			words = tokenizer.tokenize(this.sentence.getSentence().toLowerCase());
 		}
 		catch (IOException e) {
 			e.printStackTrace();
