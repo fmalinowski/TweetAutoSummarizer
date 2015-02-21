@@ -50,7 +50,9 @@ public class Sentence extends Object {
 		this.weight = 0;
 		
 		for (String wordString : wordsInSentence) {
-			this.weight += wordsHashTable.get(wordString).getWeight();
+			if (!StopWordChecker.isStopWord(wordString)) {
+				this.weight += wordsHashTable.get(wordString).getWeight();
+			}
 		}
 		
 		this.weight /= Math.max(this.getNumberOfWords(), minimumThreshold);
@@ -62,8 +64,13 @@ public class Sentence extends Object {
 		// Here we should be able to get the total number of words (even with stop words)
 		// but we should remove the stop words and punctuation from the results. 
 		// Also all the words should be lower case and stemmed if an option is provided.
-		this.words = new SentenceToWordsBreaker(this).breakIntoWords(); // We should lower case
-		this.setNumberOfWords(words.length);
+		WordsCleaner wordsCleaner;
+		String[] brokenWords;
+		
+		brokenWords = new SentenceToWordsBreaker(this).breakIntoWords(); // We should lower case
+		wordsCleaner = new WordsCleaner(brokenWords);
+		this.words = wordsCleaner.removePunctuation();
+		this.setNumberOfWords(wordsCleaner.getWordNumberWithoutPunctuation());
 		return this.words;
 	}
 	
