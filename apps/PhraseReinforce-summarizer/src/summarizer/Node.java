@@ -1,7 +1,10 @@
 package summarizer;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Node {
 	String word;
@@ -80,16 +83,20 @@ public class Node {
 	}
 	
 	public void assignScore(){
-		assignScore(true,true,1);
-		assignScore(true,false,1);
+		assignScore(true,true,0);
+		assignScore(true,false,0);
 	}
 	private static final double b = 10;
-	
+	private static final String[] STOP_WORDS = new String[]{
+		"a","an","and","are","as","at","be","by","for","from","has","he","in","is","its","of","on","that","the","to","was","were","will","with"
+	};
+	private static final Set<String> STOP_WORDS_SET = new HashSet<String>(Arrays.asList(STOP_WORDS));
+
 	public void assignScore(Boolean isRoot,Boolean isLeft,int depth){
-		if(isRoot){
+		if(isRoot || STOP_WORDS_SET.contains(word)){
 			score = 0;
 		} else {
-			score = count - depth*Math.log(depth)/Math.log(b);
+			score = count - depth*Math.log(count)/Math.log(b);
 		}
 		List<Node> l = isLeft ? left : right;
 		for(Node n : l){
