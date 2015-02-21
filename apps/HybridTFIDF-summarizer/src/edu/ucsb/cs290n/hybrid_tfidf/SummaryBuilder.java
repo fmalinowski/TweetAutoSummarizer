@@ -1,4 +1,6 @@
 package edu.ucsb.cs290n.hybrid_tfidf;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +23,9 @@ public class SummaryBuilder {
 		HashMap<String, Word> wordsHashTable;
 		int numberOfWordsConsidered;
 		String summarySentence;
+		
+		System.out.println("Retrieving the stop words");
+		StopWordChecker.getStopWords();
 		
 		System.out.println("Getting all the tweets...");
 		List<String> listOfPosts = new TextFileReader(filename).getLines();
