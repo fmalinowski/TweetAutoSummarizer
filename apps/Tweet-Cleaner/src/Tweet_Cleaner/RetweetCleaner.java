@@ -44,4 +44,37 @@ public class RetweetCleaner {
 		}
 		
 	}
+	
+	public static void cleanRTmark(File input,File output){
+		PrintWriter pWriter = null;
+		BufferedReader bReader = null;
+		try {
+			bReader = new BufferedReader(new FileReader(input));
+			pWriter = new PrintWriter(output);
+			String line = bReader.readLine();
+			while(line != null){
+				String t = Helper.getTweetText(line);
+				if(t != null){
+					t = t.replaceAll("^RT @\\w+:( ){0,1}", "");
+					pWriter.append(Helper.getTweenInfo(line));
+					pWriter.append(t);
+					pWriter.append('\n');
+				}
+				line = bReader.readLine();
+			}
+			bReader.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(pWriter != null){
+				pWriter.close();
+			}
+		
+		}
+		
+	}
 }
