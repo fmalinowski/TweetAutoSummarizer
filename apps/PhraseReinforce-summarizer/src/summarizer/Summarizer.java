@@ -45,6 +45,7 @@ public class Summarizer {
 		}
 		rootNode.assignScore();
 		rootNode.print();
+		System.out.println(rootNode.findTheLargestPath());
 		return null;
 	}
 	

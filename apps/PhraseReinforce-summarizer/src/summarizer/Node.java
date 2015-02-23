@@ -1,6 +1,8 @@
 package summarizer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -88,7 +90,7 @@ public class Node {
 	}
 	private static final double b = 10;
 	private static final String[] STOP_WORDS = new String[]{
-		"a","an","and","are","as","at","be","by","for","from","has","he","in","is","its","of","on","that","the","to","was","were","will","with"
+		"a","an","and","are","as","at","be","by","for","from","has","he","in","is","its","of","on","that","the","to","was","were","will","with","rt","ny"
 	};
 	private static final Set<String> STOP_WORDS_SET = new HashSet<String>(Arrays.asList(STOP_WORDS));
 
@@ -102,5 +104,35 @@ public class Node {
 		for(Node n : l){
 			n.assignScore(false, isLeft, depth + 1);
 		}
+	}
+	public List<Node> findTheLargestPath(){
+		List<Node> l = new ArrayList<Node>();
+		List<Node> r = new ArrayList<Node>();
+		largestPath(true, l);
+		largestPath(false, r);
+		l.remove(0);
+		Collections.reverse(l);
+		l.addAll(r);
+		return l;
+	}
+	public double largestPath(boolean isLeft,List<Node> path){
+		List<Node> l = isLeft ? left : right;
+		path.add(this);
+		if(l.size() == 0){
+			return score;
+		}
+		List<Node> maxPath = null;
+		double maxScore = 0;
+		for(Node n : l){
+			List<Node> l2 = new ArrayList<Node>();
+			double p = n.largestPath(isLeft, l2);
+			if(maxPath == null || maxScore < p){
+				maxPath = l2;
+				maxScore = p;
+			}
+		}
+		path.addAll(maxPath);
+		return maxScore + score;
+		
 	}
 }
