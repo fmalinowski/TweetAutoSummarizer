@@ -55,7 +55,7 @@ public class RetweetCleaner {
 			while(line != null){
 				String t = Helper.getTweetText(line);
 				if(t != null){
-					t = t.replaceAll("^RT @\\w+:( ){0,1}", "");
+					t = t.replaceAll("^(:){0,1}RT @\\w+:( ){0,1}", "");
 					pWriter.append(Helper.getTweenInfo(line));
 					pWriter.append(t);
 					pWriter.append('\n');
