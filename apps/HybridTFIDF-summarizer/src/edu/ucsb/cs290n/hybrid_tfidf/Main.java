@@ -17,11 +17,12 @@ public class Main {
 		File file = new File(fileloc);
 		if (file.exists()) {
 			SummaryBuilder summaryBuilder = new SummaryBuilder(fileloc);
-			System.out.println("Generating summary...");
-			summarySentence = summaryBuilder.buildSummary(fileloc);
+			System.out.println("Generating the summary");
+			summarySentence = summaryBuilder.buildSummary();
 			System.out.println("");
 			System.out.println("Here is the generated summary:");
 			System.out.println(summarySentence);
+			System.out.println("");
 		}
 		else {
 			System.out.println("The file doesn't exist!");

@@ -14,6 +14,34 @@ public class TextFileReader {
 		this.filename = filename;
 	}
 	
+	public String getLineByIndex(int requestedIndex) {
+		String line, requestedLine;
+		int currentIndex = 0;
+		
+		requestedLine = "";
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(this.filename));
+			
+			while ((line = bufferedReader.readLine()) != null) {
+				if (currentIndex == requestedIndex) {
+					requestedLine = line;
+					break;
+				}
+				
+				currentIndex++;
+			}
+			
+			bufferedReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.err.println("Error while reading line from the Tweet posts file");
+			e.printStackTrace();
+		}
+		
+		return requestedLine;
+	}
+	
 	public List<String> getLines() {
 		List<String> postsArray = new ArrayList<String>();
 		String line;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.ucsb.cs290n.preprocessing.Cleaner;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 
@@ -17,10 +18,11 @@ public class PostsToSentencesDivider {
 		this.listOfTweetPosts = listOfTweetPosts;
 	}
 	
-	public List<Sentence> dividePostsIntoSentences() {
+	public List<Sentence> dividePostsIntoSentencesAndClean() {
 		List<Sentence> listOfSentences = new ArrayList<Sentence>();
 		
 		InputStream enSentenceInputStream = null;
+		String cleanedSentence;
 		
 		try {
 			enSentenceInputStream = PostsToSentencesDivider.class.getClassLoader().getResourceAsStream("resources/en-sent.bin");
@@ -31,7 +33,9 @@ public class PostsToSentencesDivider {
 			for (String post: listOfTweetPosts) {
 				
 				for (String sentenceString : sentenceDetector.sentDetect(post)) {
-					listOfSentences.add(new Sentence(sentenceString));					
+					cleanedSentence = Cleaner.cleanMentions(sentenceString);
+					cleanedSentence = Cleaner.cleanHashtags(cleanedSentence);
+					listOfSentences.add(new Sentence(cleanedSentence, sentenceString));					
 				}
 			}
 			

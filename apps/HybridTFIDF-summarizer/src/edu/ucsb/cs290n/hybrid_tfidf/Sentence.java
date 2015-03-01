@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Sentence extends Object {
 	
 	private String sentence;
+	private String originalSentence;
 	private double weight = 0;
 	private int numberOfWords = 0;
 	private int normalizationFactor = 0;
@@ -15,12 +16,25 @@ public class Sentence extends Object {
 		this.sentence = sentence;
 	}
 	
+	public Sentence(String sentence, String originalSentence) {
+		this(sentence);
+		this.originalSentence = originalSentence;
+	}
+	
 	public String getSentence() {
 		return sentence;
 	}
 	
 	public void setSentence(String sentence) {
 		this.sentence = sentence;
+	}
+	
+	public void setOriginalSentence(String originalSentence) {
+		this.originalSentence = originalSentence;
+	}
+	
+	public String getOriginalSentence() {
+		return this.originalSentence;
 	}
 	
 	public double getWeight() {

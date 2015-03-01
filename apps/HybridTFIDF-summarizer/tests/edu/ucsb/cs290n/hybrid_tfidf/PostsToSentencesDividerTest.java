@@ -10,7 +10,7 @@ import org.junit.Test;
 public class PostsToSentencesDividerTest {
 
 	@Test
-	public void testDividePostsIntoSentences() {
+	public void testDividePostsIntoSentencesAndClean() {
 		
 		List<String> listOfPosts = new ArrayList<String>();
 		listOfPosts.add("My great sentence 1. Then, it's followed by the sentence2...");
@@ -19,7 +19,7 @@ public class PostsToSentencesDividerTest {
 		
 		PostsToSentencesDivider sentenceDivider = new PostsToSentencesDivider(listOfPosts);
 		
-		List<Sentence> resultSentencesList = sentenceDivider.dividePostsIntoSentences();
+		List<Sentence> resultSentencesList = sentenceDivider.dividePostsIntoSentencesAndClean();
 		
 		assertEquals(4, resultSentencesList.size());
 		assertEquals("My great sentence 1.", resultSentencesList.get(0).getSentence());
