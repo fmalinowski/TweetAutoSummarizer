@@ -1,7 +1,9 @@
 package edu.ucsb.cs290n.hybrid_tfidf;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
+import cmu.arktweetnlp.Twokenize;
 import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
@@ -21,28 +23,9 @@ public class SentenceToWordsBreaker {
 //	Look at the test to see the problems
 	public String[] breakIntoWords() {
 		String words[] = null;
-		InputStream enTokenInputStream = PostsToSentencesDivider.class.getClassLoader().getResourceAsStream("resources/en-token.bin");
-		
-		try {
-			TokenizerModel tokenizerModel = new TokenizerModel(enTokenInputStream);
-			Tokenizer tokenizer = new TokenizerME(tokenizerModel);
 			
-			words = tokenizer.tokenize(this.sentence.getSentence());
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		finally {
-			if (enTokenInputStream != null) {
-				try {
-					enTokenInputStream.close();
-				}
-				catch (IOException e) {
-				}
-			}
-		}
-		
-		return words;
+		List<String> wordsList = Twokenize.tokenizeRawTweetText(this.sentence.getSentence());
+		return wordsList.toArray(new String[wordsList.size()]);
 	}
 
 }
