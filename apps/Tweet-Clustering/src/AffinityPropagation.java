@@ -25,8 +25,10 @@ public class AffinityPropagation {
 			}
 		}
 	}
-	
 	public void Calculate(int maxItr){
+		Calculate(maxItr,0);
+	}
+	public void Calculate(int maxItr,double lambda){
 		int n = S.length;
 		int m = S[0].length;
 		double delta = Double.MAX_VALUE;
@@ -60,6 +62,7 @@ public class AffinityPropagation {
 				}
 				for(int j = 0;j < m;j++){
 					R_new[i][j] = S[i][j] - Math.max(maxFromLeftAS[j], maxFromRightAS[j]);
+					R_new[i][j] = lambda*R[i][j] + (1 - lambda)*R_new[i][j];
 					
 					double sum = rs - Math.max(0, R[i][j]) - Math.max(0, R[j][j]);
 					if(i == j){
@@ -68,13 +71,14 @@ public class AffinityPropagation {
 						A_new[i][j] = Math.min(R[j][j] + sum, 0);
 					}
 					
+					A_new[i][j] = lambda*A[i][j] + (1 - lambda)*A_new[i][j];
 					delta += Math.abs(A_new[i][j] - A[i][j]) + Math.abs(R_new[i][j] - R[i][j]);
 				}
 				
 			}
 			
 			itr++;
-			System.out.println("iterate:" + itr);
+			System.out.println("iterate:" + itr + ", delta" + delta + ";");
 			A = A_new;
 			R = R_new;
 		}
