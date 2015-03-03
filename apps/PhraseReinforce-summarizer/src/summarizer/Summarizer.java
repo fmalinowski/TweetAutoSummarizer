@@ -41,7 +41,7 @@ public class Summarizer {
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(new Summarizer().summarize(exampleSentence,"#KidLegislation"));
+		System.out.println(new Summarizer().summarize(exampleSentence,"Huntington Beach"));
 	}
 	
 	public String summarize(String[] sentences,String topic){
@@ -49,7 +49,7 @@ public class Summarizer {
 		Tokenizer t = new Tokenizer();
 		
 		for(String s : sentences){
-			String[] parts = s.split(topic);
+			String[] parts = s.split("(?i)" + topic);
 			if(parts.length != 2){
 				continue;
 			}
