@@ -33,4 +33,6 @@ public class Distance {
 		}
 		return 1 - ((double)i)/j;
 	}
+	
+	
 }
