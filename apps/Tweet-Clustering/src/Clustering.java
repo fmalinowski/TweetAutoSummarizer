@@ -62,7 +62,12 @@ public class Clustering {
 		distance = new double[tweetRawText.size()][tweetRawText.size()];
 		for(int i = 0;i < tweetRawText.size();i++){
 			for(int j = 0;j < tweetRawText.size();j++){
-				distance[i][j] = -method.getDistance(tweetTokens.get(i), tweetTokens.get(j));
+				if(method instanceof DistanceList){
+					distance[i][j] = ((DistanceList)method).getDistance(tweetTokens.get(i), tweetTokens.get(j));
+				} else {
+					distance[i][j] = ((DistanceIdx)method).getDistance(i, j);
+				}
+				
 			}
 		}
 	}
@@ -127,7 +132,7 @@ public class Clustering {
 				if(o1.distance == o2.distance){
 					return 0;
 				}
-				return o1.distance < o2.distance ? 1 : -1;
+				return o1.distance > o2.distance ? 1 : -1;
 			}
 		});
 		for(int i = 1;i < ld.size();i++){
@@ -139,4 +144,40 @@ public class Clustering {
 		return ld.subList(0, k);
 	}
 	
+	public List<DistanceId> getCloserThan(double l, int which,boolean dup){
+		List<DistanceId> ld = new ArrayList<DistanceId>();
+		String t = tweetRawText.get(which);
+		for(int i = 0;i < tweetRawText.size();i++){
+			if(i == which){
+				continue;
+			}
+			if(!dup && tweetRawText.get(i).equals(t)){
+				continue;
+			}
+			ld.add(new DistanceId(distance[which][i], i));
+		}
+		Collections.sort(ld,new Comparator<DistanceId>() {
+
+			@Override
+			public int compare(DistanceId o1, DistanceId o2) {
+				if(o1.distance == o2.distance){
+					return 0;
+				}
+				return o1.distance > o2.distance ? 1 : -1;
+			}
+		});
+		for(int i = 1;i < ld.size();i++){
+			if(ld.get(i).tt.equals(ld.get(i - 1).tt)){
+				ld.remove(i);
+				i--;
+			}
+		}
+		int i = 0;
+		for(;i < ld.size();i++){
+			if(ld.get(i).distance > l){
+				break;
+			}
+		}
+		return ld.subList(0, i);
+	}
 }
