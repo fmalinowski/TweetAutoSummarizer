@@ -23,7 +23,7 @@ public class SentenceToWordsBreaker {
 //	remove stop words like the, a but also the punctuation
 //	it should also consider (or remove completely) the whole URL addresses.
 //	Look at the test to see the problems
-	public String[] breakIntoWords() {
+	public String[] breakIntoWordsAndStem() {
 		String word;
 		String words[] = null;
 		EnglishStemmer stemmer;
@@ -38,6 +38,16 @@ public class SentenceToWordsBreaker {
 			stemmer.stem();
 			wordsList.set(i, stemmer.getCurrent());
 		}
+		
+		return wordsList.toArray(new String[wordsList.size()]);
+	}
+	
+	public String[] breakIntoWords() {
+		String word;
+		String words[] = null;
+		EnglishStemmer stemmer;
+			
+		List<String> wordsList = Twokenize.tokenizeRawTweetText(this.sentence.getSentence());
 		
 		return wordsList.toArray(new String[wordsList.size()]);
 	}

@@ -81,7 +81,7 @@ public class Sentence extends Object {
 		WordsCleaner wordsCleaner;
 		String[] brokenWords;
 		
-		brokenWords = new SentenceToWordsBreaker(this).breakIntoWords(); // We should lower case
+		brokenWords = new SentenceToWordsBreaker(this).breakIntoWordsAndStem(); // We should lower case
 		wordsCleaner = new WordsCleaner(brokenWords);
 		this.words = wordsCleaner.removePunctuation();
 		this.setNumberOfWords(wordsCleaner.getWordNumberWithoutPunctuation());
