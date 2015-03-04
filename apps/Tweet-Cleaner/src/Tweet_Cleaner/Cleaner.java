@@ -26,7 +26,7 @@ public class Cleaner {
 		//File outputFile = new File(args[1]);
 		
 		
-		UnASCIICleaner.cleanNotASCII(new File("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\Huntington Beach.txt"), new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-1.txt"));
+		UnASCIICleaner.cleanNotASCII(new File("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\60 minutes.txt"), new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-1.txt"));
 		LinkCleaner.cleanLink(new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-1.txt"), new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-2.txt"));
 		RetweetCleaner.cleanRTmark(new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-2.txt"), new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-3.txt"));
 		ExtractCleaner.ExtractClean(new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-3.txt"), new File("C:\\backfile\\cs290n\\tweets\\#KidLegislation-4.txt"));

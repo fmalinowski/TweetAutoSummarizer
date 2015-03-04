@@ -10,6 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import Tweet_Cleaner.Cleaner;
+
 public class Summarizer {
 	static String[] exampleSentence = new String[]{
 		"Aw, Comedian Soupy Sales Died.",
@@ -39,9 +41,31 @@ public class Summarizer {
 		}
 		
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		System.out.println(new Summarizer().summarize(exampleSentence,"Huntington Beach"));
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\Huntington Beach.txt").toArray(new String[1500]),"Huntington Beach"));
+		System.out.println();
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\Kings.txt").toArray(new String[1500]),"Kings"));
+		System.out.println();
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\60 Minutes.txt").toArray(new String[1500]),"60 Minutes"));
+		System.out.println();
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\#20DaysOfDallas.txt").toArray(new String[1500]),"@camerondallas"));
+		System.out.println();
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\LAPD.txt").toArray(new String[1500]),"police"));
+		System.out.println();
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\Brian Williams.txt").toArray(new String[1500]),"Brian Williams"));
+		System.out.println();
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\#DylansNewVideo.txt").toArray(new String[1500]),"#DylansNewVideo"));
+		System.out.println();
+		System.out.println(new Summarizer().summarize(
+				Cleaner.getCleanedTweets("C:\\backfile\\cs290n\\CS290NTweet\\apps\\Twitter-aggregator\\tweet-samples\\Disneyland.txt").toArray(new String[1500]),"Disneyland"));
 	}
 	
 	public String summarize(String[] sentences,String topic){
@@ -49,6 +73,9 @@ public class Summarizer {
 		Tokenizer t = new Tokenizer();
 		
 		for(String s : sentences){
+			if(s == null || s.length() == 0){
+				continue;
+			}
 			String[] parts = s.split("(?i)" + topic);
 			if(parts.length != 2){
 				continue;
@@ -71,8 +98,6 @@ public class Summarizer {
 			}
 		}
 		rootNode.assignScore();
-		System.out.println(rootNode.left);
-		System.out.println(rootNode.right);
 		List<Node> summList = rootNode.findTheLargestPathWithBeginPrun(2);
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0;i < summList.size();i++){
