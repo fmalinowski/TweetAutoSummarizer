@@ -52,9 +52,11 @@ public class SentencesToWordsDividerTest {
 		assertEquals(3, wordsHashTable.get("too").getNumberOfOccurences());
 		assertEquals(2, wordsHashTable.get("too").getNumberOfSentencesContainingWord());
 		
-		assertEquals("many", wordsHashTable.get("many").getWord());
-		assertEquals(1, wordsHashTable.get("many").getNumberOfOccurences());
-		assertEquals(1, wordsHashTable.get("many").getNumberOfSentencesContainingWord());
+//		assertEquals("many", wordsHashTable.get("many").getWord());
+		//With stemming
+		assertEquals("mani", wordsHashTable.get("mani").getWord());
+		assertEquals(1, wordsHashTable.get("mani").getNumberOfOccurences());
+		assertEquals(1, wordsHashTable.get("mani").getNumberOfSentencesContainingWord());
 		
 		assertEquals(5, sentence1.getNumberOfWords());
 		assertEquals(4, sentence2.getNumberOfWords());

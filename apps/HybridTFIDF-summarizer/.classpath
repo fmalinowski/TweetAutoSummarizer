@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="lib/javassist-3.18.2-GA.jar"/>
 	<classpathentry kind="lib" path="lib/ark-tweet-nlp-0.3.2.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-snowball-3.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

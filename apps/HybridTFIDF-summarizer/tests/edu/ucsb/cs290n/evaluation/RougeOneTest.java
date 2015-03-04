@@ -82,13 +82,16 @@ public class RougeOneTest {
 	@Test
 	public void testGetOneGrams() {
 		String sentence1 = "I'm somewhere else, but you're not!";
-		String sentence2 = "Imagine a sentence with 2,, that's so weird huh?";
+		String sentence2 = "Imagine a sentence with comma, that's so weird huh?";
+		String sentence3 = "'snow-like' hail, 20DaysOfDallas, Cameron's videos, I had/am having fun.";
 		
 		String[] expected1 = {"I'm", "somewhere", "else", "but", "you're", "not"};
-		String[] expected2 = {"Imagine", "a", "sentence", "with", "2", ",,", "that's", "so", "weird", "huh"};
+		String[] expected2 = {"Imagine", "a", "sentence", "with", "comma", "that's", "so", "weird", "huh"};
+		String[] expected3 = {"snow-like", "hail", "20DaysOfDallas", "Cameron's", "videos", "I", "had/am", "having", "fun"};
 		
 		assertEquals(expected1, RougeOne.getOneGrams(sentence1).toArray());
 		assertEquals(expected2, RougeOne.getOneGrams(sentence2).toArray());
+		assertEquals(expected3, RougeOne.getOneGrams(sentence3).toArray());
 	}
 
 }
