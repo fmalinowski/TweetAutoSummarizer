@@ -25,6 +25,9 @@ public class StopWordCheckerTest {
 		assertTrue(StopWordChecker.isPunctuation(":"));
 		assertTrue(StopWordChecker.isPunctuation(";"));
 		assertTrue(StopWordChecker.isPunctuation("\""));
+		assertTrue(StopWordChecker.isPunctuation("/"));
+		assertTrue(StopWordChecker.isPunctuation("\\"));
+		assertTrue(StopWordChecker.isPunctuation("|"));
 		assertTrue(StopWordChecker.isPunctuation("'"));
 		assertTrue(StopWordChecker.isPunctuation("("));
 		assertTrue(StopWordChecker.isPunctuation(")"));

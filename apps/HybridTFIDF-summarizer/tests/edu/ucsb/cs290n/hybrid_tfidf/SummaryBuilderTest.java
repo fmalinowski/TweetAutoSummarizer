@@ -85,7 +85,7 @@ public class SummaryBuilderTest {
 		listOfSentences.add(sentence4);
 		
 		SummaryBuilder summaryBuilder = new SummaryBuilder("whatever");
-		assertEquals("Third Sentence", summaryBuilder.computeSentencesWeight(listOfSentences, wordsHashTable));
+		assertEquals("Third Sentence", summaryBuilder.computeSentencesWeight(listOfSentences, wordsHashTable).getSentence());
 	}
 	
 	// TEST TO BE FIXED
