@@ -1,0 +1,53 @@
+Manual         - Automated      - Recall - Precision - F-measure - Avg #words
+summary_fm.txt - summary_di.txt - 0.4857 - 0.2906 - 0.3636 - 15
+summary_di.txt - summary_fm.txt - 0.2906 - 0.4857 - 0.3636 - 9
+Average							- 0.3881 - 0.3881 - 0.3636 - 12
+
+
+tfidf(ascii,link,rtmark-then-mentions,hashtags).txt
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.2857 - 0.1639 - 0.2083 - ?
+summary_di.txt - **        - 0.2991 - 0.2869 - 0.2929 - ?
+Average                    - 0.2924 - 0.2254 - 0.2506 - ?
+
+tfidf(no-cleaning).txt
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.4000 - 0.2434 - 0.3027 - ?
+summary_di.txt - **        - 0.2479 - 0.2522 - 0.2500 - ?
+Average                    - 0.3240 - 0.2478 - 0.2764 - ?
+
+tfidf(ascii,link,rtmark).txt
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.3143 - 0.1930 - 0.2391 - ?
+summary_di.txt - **        - 0.2650 - 0.2719 - 0.2684 - ?
+Average                    - 0.2897 - 0.2325 - 0.2538 - ?
+
+tfidf(ascii,link,rtmark-then-stemming).txt
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.3571 - 0.2358 - 0.2841 - ?
+summary_di.txt - **        - 0.2393 - 0.2642 - 0.2511 - ?
+Average                    - 0.2982 - 0.2500 - 0.2676 - ?
+
+tfidf(no-cleaning-then-stemming).txt
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.4286 - 0.2609 - 0.3243 - ?
+summary_di.txt - **        - 0.2564 - 0.2609 - 0.2586 - ?
+Average                    - 0.3425 - 0.2609 - 0.2915 - ?
+
+tfidf(ascii,link,rtmark-then-stemming-ts10).txt
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.4286 - 0.2941 - 0.3488 - ?
+summary_di.txt - **        - 0.2650 - 0.3039 - 0.2831 - ?
+Average                    - 0.3468 - 0.2990 - 0.3160 - ?
+
+tfidf(ascii,link,rtmark-then-stemming-ts9).txt
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.4000 - 0.2772 - 0.3275 - ?
+summary_di.txt - **        - 0.2479 - 0.2871 - 0.2661 - ?
+Average                    - 0.3240 - 0.2822 - 0.2968 - ?
+
+tfidf(ascii,link,rtmark-then-stemming-ts10-no-hashtags,mentions).txt BEST
+Manual         - Automated - Recall - Prec   - F-mea  - Avg #words
+summary_fm.txt - **        - 0.4857 - 0.3036 - 0.3736 - ?
+summary_di.txt - **        - 0.3162 - 0.3304 - 0.3231 - ?
+Average                    - 0.4001 - 0.3170 - 0.3484 - ?
