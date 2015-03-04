@@ -13,7 +13,7 @@ import edu.ucsb.cs290n.tools.TextFileReader;
 
 public class SummaryBuilder {
 	
-	public static final int MINIMUM_THRESHOLD = 11;
+	public static final int MINIMUM_THRESHOLD = 10;
 	private String filename;
 	private String preprocessedFilename;
 	
