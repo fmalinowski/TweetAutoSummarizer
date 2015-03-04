@@ -2,8 +2,10 @@ package edu.ucsb.cs290n.evaluation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import edu.ucsb.cs290n.hybrid_tfidf.Sentence;
 import edu.ucsb.cs290n.hybrid_tfidf.SentenceToWordsBreaker;
+import edu.ucsb.cs290n.hybrid_tfidf.StopWordChecker;
 
 public class RougeOne {
 
@@ -85,9 +87,21 @@ public class RougeOne {
 		return (2 * (precision * recall) / (precision + recall));
 	}
 	
-	private ArrayList<String> getOneGrams(String sentence) {
+	public static ArrayList<String> getOneGrams(String sentence) {
+		String oneGram;
 		String[] oneGrams = new SentenceToWordsBreaker(new Sentence(sentence)).breakIntoWords();
-		return new ArrayList<String>(Arrays.asList(oneGrams));
+		ArrayList<String> oneGramsList = new ArrayList<String>(Arrays.asList(oneGrams));
+		
+		for (int i = 0; i < oneGramsList.size();) {
+			oneGram = oneGramsList.get(i);
+			if (StopWordChecker.isPunctuation(oneGram)) {
+				oneGramsList.remove(i);
+			}
+			else {
+				i++;
+			}
+		}
+		return oneGramsList;
 	}
 	
 }

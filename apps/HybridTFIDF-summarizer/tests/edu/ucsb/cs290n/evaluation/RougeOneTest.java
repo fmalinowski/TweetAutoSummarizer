@@ -60,23 +60,35 @@ public class RougeOneTest {
 
 	@Test
 	public void testGetRecall() {
-		assertEquals(0.4667, rougeOne1.getRecall(), 0.0001);
+		assertEquals(0.4286, rougeOne1.getRecall(), 0.0001);
 		assertEquals(1.0, rougeOne2.getRecall(), 0.0001);
 		assertEquals(0.6, rougeOne3.getRecall(), 0.0001);
 	}
 
 	@Test
 	public void testGetPrecision() {
-		assertEquals(0.4117, rougeOne1.getPrecision(), 0.0001);
+		assertEquals(0.375, rougeOne1.getPrecision(), 0.0001);
 		assertEquals(1.0, rougeOne2.getPrecision(), 0.0001);
 		assertEquals(0.5, rougeOne3.getPrecision(), 0.0001);
 	}
 
 	@Test
 	public void testGetFmeasure() {
-		assertEquals(0.4374, rougeOne1.getFmeasure(), 0.0001);
+		assertEquals(0.4000, rougeOne1.getFmeasure(), 0.0001);
 		assertEquals(1.0, rougeOne2.getFmeasure(), 0.0001);
 		assertEquals(0.5455, rougeOne3.getFmeasure(), 0.0001);
+	}
+	
+	@Test
+	public void testGetOneGrams() {
+		String sentence1 = "I'm somewhere else, but you're not!";
+		String sentence2 = "Imagine a sentence with 2,, that's so weird huh?";
+		
+		String[] expected1 = {"I'm", "somewhere", "else", "but", "you're", "not"};
+		String[] expected2 = {"Imagine", "a", "sentence", "with", "2", ",,", "that's", "so", "weird", "huh"};
+		
+		assertEquals(expected1, RougeOne.getOneGrams(sentence1).toArray());
+		assertEquals(expected2, RougeOne.getOneGrams(sentence2).toArray());
 	}
 
 }

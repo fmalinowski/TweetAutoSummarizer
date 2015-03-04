@@ -43,9 +43,10 @@ public class StopWordChecker {
 	
 	public static Boolean isPunctuation(String word) {
 		String[] punctuation = {
-				",", ".", "?", "!", ":", ";", "\"", "'", "(", ")", "{", "}", 
+				",", ".", "?", "!", ":", ";", "\"", "/", "\\", "|", "'", "(", ")", "{", "}", 
 				"[", "]", "`"
 		};
+		
 		return Arrays.asList(punctuation).contains(word);
 	}
 
