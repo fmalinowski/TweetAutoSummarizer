@@ -104,7 +104,7 @@ public class Node {
 		assignScore(true,true,0);
 		assignScore(true,false,0);
 	}
-	private static final double b = 10;
+	private static final double b = 100;
 	private static final String[] STOP_WORDS = new String[]{
 		"a","an","and","are","as","at","be","by","for","from","has","he","in","is","its","of","on","that","the","to","was","were","will","with","rt"
 	};

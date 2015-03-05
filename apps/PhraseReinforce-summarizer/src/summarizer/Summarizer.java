@@ -82,16 +82,16 @@ public class Summarizer {
 			}
 			
 			// left part
-			String l = parts[0];
-			List<String> lword = t.tokenize(l);
+			String l = parts[0].replaceAll("(@|#)\\w*", "");
+			List<String> lword = t.tokenizeStem(l);
 			Node n = rootNode;
 			for(int i = lword.size() - 1;i >= 0;i--){
 				n = n.updateLeftNode(lword.get(i));
 			} 
 			
 			// right part
-			String r = parts[1];
-			List<String> rword = t.tokenize(r);
+			String r = parts[1].replaceAll("(@|#)\\w*", "");
+			List<String> rword = t.tokenizeStem(r);
 			n = rootNode;
 			for(int i = 0;i < rword.size();i++){
 				n = n.updateRightNode(rword.get(i));
