@@ -20,6 +20,11 @@ public class Cleaner {
 		return Files.readAllLines(new File(output).toPath(), Charset.defaultCharset());
 
 	}
+	public static List<String> getUncleanedTweets(String p) throws IOException{
+		String output = p.replaceAll(".txt$", "_cleaned.txt");
+		ExtractCleaner.ExtractClean(new File(p), new File(output));
+		return Files.readAllLines(new File(output).toPath(), Charset.defaultCharset());
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//File inputFile = new File(args[0]);

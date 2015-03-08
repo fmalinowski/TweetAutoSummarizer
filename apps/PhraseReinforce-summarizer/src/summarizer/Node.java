@@ -25,6 +25,13 @@ public class Node {
 		score = 0;
 	}
 	
+	Node(String word,String form){
+		this.word = word;
+		forms.put(form, 1);
+		count = 1;
+		score = 0;
+	}
+	
 	public Node getLeftNodeByWord(String s){
 		return getNodeByWord(left,s);
 	}
@@ -43,7 +50,7 @@ public class Node {
 			}
 			node.count++;
 		} else {
-			node = new Node(w);
+			node = new Node(w.toLowerCase(),w);
 			left.add(node);
 		}
 		return node;
@@ -60,7 +67,7 @@ public class Node {
 			}
 			node.count++;
 		} else {
-			node = new Node(l);
+			node = new Node(l,w);
 			right.add(node);
 		}
 		return node;
@@ -104,7 +111,7 @@ public class Node {
 		assignScore(true,true,0);
 		assignScore(true,false,0);
 	}
-	private static final double b = 100;
+	public static double b = 10;
 	private static final String[] STOP_WORDS = new String[]{
 		"a","an","and","are","as","at","be","by","for","from","has","he","in","is","its","of","on","that","the","to","was","were","will","with","rt"
 	};
@@ -186,5 +193,26 @@ public class Node {
 		path.addAll(maxPath);
 		return maxScore + score;
 		
+	}
+	
+	public void pruneLeft(){
+		for(int i = 0;i < left.size();i++){
+			if(left.get(i).left.size() == 1){
+				left.remove(i);
+				i--;
+			} else {
+				left.get(i).pruneLeft();
+			}
+		}
+	}
+	public void pruneRight(){
+		for(int i = 0;i < right.size();i++){
+			if(right.get(i).right.size() == 1){
+				right.remove(i);
+				i--;
+			} else {
+				right.get(i).pruneRight();
+			}
+		}
 	}
 }
